@@ -1,0 +1,122 @@
+package com.spring.henallux.controller;
+
+import java.util.ArrayList;
+import java.util.Locale;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.search.FullTextSession;
+import org.hibernate.search.Search;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import com.spring.henallux.dataAccess.dao.EquivalentCategoryDAO;
+import com.spring.henallux.dataAccess.dao.ModelDAO;
+import com.spring.henallux.model.Client;
+import com.spring.henallux.model.EquivalentCategory;
+import com.spring.henallux.model.OrderShop;
+import com.spring.henallux.sessionAttributeModel.Categories;
+import com.spring.henallux.sessionAttributeModel.ClientBasket;
+import com.spring.henallux.sessionAttributeModel.ConnectedClient;
+import com.spring.henallux.sessionAttributeModel.ProcessCommand;
+import com.spring.henallux.util.Constant;
+
+
+@Controller
+@RequestMapping(value="/welcome")
+@SessionAttributes({Constant.ORDERSHOP, Constant.CONNECTEDCLIENT, Constant.CLIENTBASKET, 
+	Constant.PROCESSCOMMAND, Constant.CLIENT, Constant.CATEGORIES})
+public class WelcomeController {
+
+	@Autowired
+	private SessionFactory sessionFactory;
+	
+	@Autowired
+	private ModelDAO modelDAO;
+	
+	@Autowired
+	private EquivalentCategoryDAO equivalentCategoryDAO;
+	
+	@Autowired
+	private MessageSource titleMessage;
+	
+	@ModelAttribute(Constant.CATEGORIES)
+	public Categories currentCategories(){
+		return new Categories();
+	}
+	
+	@ModelAttribute(Constant.CLIENTBASKET)
+	public ClientBasket currentClientBasket(){
+		return new ClientBasket();
+	}
+	
+	@ModelAttribute(Constant.CLIENT)
+	public Client client(){
+		return new Client();
+	}
+	
+	
+	@ModelAttribute(Constant.ORDERSHOP)
+	public OrderShop currentOrderShop(){
+		return new OrderShop();
+	}
+	
+	@ModelAttribute(Constant.CONNECTEDCLIENT)
+	public ConnectedClient currentConnectedClient(){
+		return new ConnectedClient();
+	}
+	
+	@ModelAttribute(Constant.PROCESSCOMMAND)
+	public ProcessCommand currendProcessCommand(){
+		return new ProcessCommand();
+	}
+	
+
+	@RequestMapping(method=RequestMethod.GET)
+	public String home(Model model, Locale locale, 
+			@ModelAttribute(value=Constant.ORDERSHOP) OrderShop orderShop,
+			@ModelAttribute(value=Constant.CONNECTEDCLIENT) ConnectedClient connectedClient,
+			@ModelAttribute(value=Constant.CLIENTBASKET) ClientBasket clientBasket, 
+			@ModelAttribute(value=Constant.CLIENT) Client client,
+			@ModelAttribute(value=Constant.CATEGORIES)Categories categories){
+		ArrayList<com.spring.henallux.model.Model> instrumentModels = modelDAO.findTop10ByOrderByIdModelDesc();
+		model.addAttribute("model", instrumentModels);
+		model.addAttribute(Constant.CLIENT, client);
+		model.addAttribute("titlePage", titleMessage.getMessage("homeTitlePage", null, locale));
+		
+		
+
+		ArrayList<EquivalentCategory> listCategory = equivalentCategoryDAO.getCategoriesByLanguage(locale.getLanguage());		
+		categories.setCategories(listCategory);
+
+		model.addAttribute("categories", categories);
+		
+		
+		//Décommenter si ajouts ou changement de structure de la BD
+		//reIndexModels(); 
+		
+		return "integrated:welcome";
+	}
+
+
+	private void reIndexModels(){
+
+		Session session = sessionFactory.openSession();
+		FullTextSession fullTextSession = Search.getFullTextSession(session);
+		try {
+			fullTextSession.createIndexer().startAndWait();
+		} catch (InterruptedException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	
+}

@@ -1,0 +1,41 @@
+package com.spring.henallux.util;
+
+public class Constant {
+	
+	//Constantes qui correspondent aux valeurs indiquées dans la BD
+	public static final String FRANCAIS = "français";
+	public static final String ENGLISH = "english";
+	
+	//Constante pour récupération dans classes java et jsp
+	public static final String IDMODEL = "idModel";
+	public static final String ORDERSHOP = "orderShop";
+	public static final String CLIENT = "client";
+	
+	
+	//Constantes qui correspondent aux Session attributes
+	public static final String BASKET = "basket";
+	public static final String ERRORMESSAGE = "errorMessage";
+	public static final String COUNTRIES = "countries";
+	public static final String PASSWORDCHANGEFORM = "passwordChangeForm";
+	public static final String UPDATECLIENTFORM = "updateClientForm";
+	public static final String LOGINERROR = "loginError";
+	public static final String CATEGORIES = "categories";
+	
+	//Constante pour gérer si l'utilisateur est connecté ou non
+	public static final String CONNECTEDCLIENT = "connectedClient";
+	
+	//Constante qui gère le panier de l'utilisateur
+	public static final String CLIENTBASKET = "clientBasket";
+	public static final String CLIENTBASKETRECORD = "clientBasketRecord";
+	
+	public static final String PROCESSCOMMAND = "processCommand";
+	
+	//Constantes qui correspondent aux 2 moyens de paiement
+	public static final String PAYPAL = "Paypal";
+	public static final String CASH = "Cash";
+	
+	
+	
+	public static final String ORDERS = "orders";
+
+}

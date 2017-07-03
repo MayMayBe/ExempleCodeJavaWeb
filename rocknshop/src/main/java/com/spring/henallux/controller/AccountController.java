@@ -1,0 +1,260 @@
+package com.spring.henallux.controller;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Set;
+import javax.validation.Valid;
+
+import org.apache.commons.lang3.math.NumberUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.spring.henallux.dataAccess.dao.ClientDAO;
+import com.spring.henallux.dataAccess.dao.CountryDAO;
+import com.spring.henallux.dataAccess.dao.EquivalentCategoryDAO;
+import com.spring.henallux.model.Client;
+import com.spring.henallux.model.Country;
+import com.spring.henallux.model.EquivalentCategory;
+import com.spring.henallux.model.OrderShop;
+import com.spring.henallux.model.PasswordChangeForm;
+import com.spring.henallux.model.UpdateClientForm;
+import com.spring.henallux.sessionAttributeModel.Categories;
+import com.spring.henallux.sessionAttributeModel.ClientBasket;
+import com.spring.henallux.sessionAttributeModel.ConnectedClient;
+import com.spring.henallux.sessionAttributeModel.Countries;
+import com.spring.henallux.sessionAttributeModel.InscriptionErrorMessage;
+import com.spring.henallux.util.Constant;
+import com.spring.henallux.util.SHA256;
+
+@Controller
+@RequestMapping(value="/account")
+@SessionAttributes({Constant.CLIENT , 
+					LoginRegisterController.NEWCLIENT,
+					Constant.CONNECTEDCLIENT,
+					Constant.ERRORMESSAGE,
+					Constant.COUNTRIES,
+					Constant.CLIENTBASKET,
+					Constant.CATEGORIES})
+					
+public class AccountController {
+	
+	@Autowired
+	private MessageSource titleMessage;
+
+	@Autowired
+	private ClientDAO clientDAO;
+	
+	@Autowired
+	private MessageSource messageSource;
+	
+	@Autowired
+	private CountryDAO countryDAO;
+	
+	@Autowired
+	private EquivalentCategoryDAO equivalentCategoryDAO;
+	
+	@ModelAttribute(Constant.UPDATECLIENTFORM)
+	public UpdateClientForm updateClientForm(){
+		return new UpdateClientForm();
+	}
+	
+	@ModelAttribute(Constant.COUNTRIES)
+	public Countries countries(){
+		return new Countries();
+	}
+	
+	@ModelAttribute(Constant.ERRORMESSAGE)
+	public InscriptionErrorMessage errorMessage(){
+		return new InscriptionErrorMessage();
+	}
+	
+	
+	public ArrayList<EquivalentCategory> setCategory(Locale locale){
+		ArrayList<EquivalentCategory> listCategory = equivalentCategoryDAO.getCategoriesByLanguage(locale.getLanguage());
+		return listCategory;
+	}
+	
+	
+	@RequestMapping(method=RequestMethod.GET)
+	public String home(Model model, Locale locale, @ModelAttribute(value=Constant.CLIENT) Client client,
+			@ModelAttribute(value=Constant.COUNTRIES) Countries countries,
+			@ModelAttribute(value=Constant.CATEGORIES)Categories categories){
+		
+		//Afficher le pays de l'utilisateur en premier dans la combobox
+		ArrayList<Country> list = countries.getCountryList();
+		
+		int position = 0;
+		
+		for(int i = 0; i < list.size() ; i++){
+			if(i != 0 && list.get(i).getCountryName().equals(client.getCountry().getCountryName())){
+				position = i;
+			}
+		}
+		list.remove(position);
+		list.sort(new Comparator<Country>(){
+
+			@Override
+			public int compare(Country arg0, Country arg1) {
+				return arg0.getCountryName().compareToIgnoreCase(arg1.getCountryName());
+			}
+		});
+		
+		ArrayList<Country> finalList = new ArrayList<>();
+		finalList.add(client.getCountry());
+		finalList.addAll(list);
+		countries.setCountryList(finalList);
+		model.addAttribute("titlePage", titleMessage.getMessage("accountTitlePage", null, locale));
+		model.addAttribute(Constant.PASSWORDCHANGEFORM,new PasswordChangeForm());
+		model.addAttribute(Constant.CLIENT, client);
+		categories.setCategories(setCategory(locale));
+		model.addAttribute("categories", categories);
+		return "integrated:account";
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, value="/signout")
+	public String signout(Model model, Locale locale, @ModelAttribute(value=Constant.CLIENT) Client client,
+			@ModelAttribute(value=Constant.ORDERSHOP) OrderShop orderShop,
+			@ModelAttribute(value=Constant.CONNECTEDCLIENT) ConnectedClient connectedClient,
+			@ModelAttribute(value=Constant.CLIENTBASKET)ClientBasket clientBasket,
+			@ModelAttribute(value=Constant.CATEGORIES)Categories categories){
+		
+		client.setFirstName(null);
+		client.setLastName(null);
+		client.setEmail(null);
+		client.setTelephoneNumber(null);
+		client.setMobileNumber(null);
+		client.setStreetName(null);
+		client.setPassword(null);
+		
+		model.addAttribute("titlePage", titleMessage.getMessage("accountTitlePage", null, locale));
+		//ConnectedClient et OrderShop
+		connectedClient.setConnected(false);
+		clientBasket.setOrderShopLines(new HashMap<>());
+		categories.setCategories(setCategory(locale));
+		model.addAttribute("categories", categories);
+		return "redirect:/welcome";
+	}
+	
+	@RequestMapping(value = "/changePassword", method = RequestMethod.POST)
+    public String changePassword(@Valid @ModelAttribute(value=Constant.PASSWORDCHANGEFORM) PasswordChangeForm passwordChangeForm, 
+    						final BindingResult errors,
+    						@ModelAttribute(value=Constant.CLIENT) Client client,
+    						@ModelAttribute(value=Constant.ERRORMESSAGE) InscriptionErrorMessage errorMessage,
+    						Model model, Locale locale, @ModelAttribute(value=Constant.CATEGORIES)Categories categories){  
+		
+		model.addAttribute(Constant.CLIENT, client);
+		model.addAttribute("titlePage", titleMessage.getMessage("accountTitlePage", null, locale));
+		categories.setCategories(setCategory(locale));
+		model.addAttribute("categories", categories);
+		
+		if(errors.hasErrors()){
+			errorMessage.setContent(messageSource.getMessage("errorPasswordChange", null, locale));
+			Set<String> listErrors = new HashSet<String>(); //Pour retirer les éléments dupliqués
+			for(FieldError f : errors.getFieldErrors()){
+				listErrors.add(f.getField());
+			}
+			
+			for(String f : listErrors){
+				errorMessage.appendContent("<br>" + messageSource.getMessage(f,null,locale));	
+			}
+			
+		}
+		else
+		{
+		
+			if(passwordChangeForm.getNewPassword().equals(passwordChangeForm.getRetypeNewPassword()))
+			{
+				
+				client.setPassword(passwordChangeForm.getOldPassword());
+				Client recordClient = clientDAO.findByEmail(client.getEmail());
+				if(SHA256.correctPassword(recordClient, client))
+				{
+					errorMessage.setContent(null);
+					recordClient.setPassword(SHA256.encodePassword(passwordChangeForm.getNewPassword()));
+					clientDAO.save(recordClient);
+					return "redirect:/welcome";
+				}
+				else
+				{
+					errorMessage.setContent(messageSource.getMessage("wrongPassword",null,locale));	
+				}
+				
+			}
+			else
+			{
+				errorMessage.setContent(messageSource.getMessage("passwordNotCorrespondingToConfirm",null,locale));
+			}
+			
+		}
+		
+		return "redirect:/account";  //Si le retour n'est pas une redirection, l'URL reste /changePassword et les liens ne sont plus fonctionnels
+    }
+
+	@RequestMapping(value = "/updateClient", method = RequestMethod.POST)
+	public String updateClient(@Valid @ModelAttribute(value=Constant.UPDATECLIENTFORM) UpdateClientForm updateClientForm, 
+								final BindingResult errors,
+								@ModelAttribute(value=Constant.CLIENT) Client client,
+								@ModelAttribute(value=Constant.ERRORMESSAGE) InscriptionErrorMessage errorMessage,
+								Model model, Locale locale, @ModelAttribute(value=Constant.CATEGORIES)Categories categories){
+		model.addAttribute(Constant.CLIENT, client);
+		model.addAttribute("titlePage", titleMessage.getMessage("accountTitlePage", null, locale));
+		categories.setCategories(setCategory(locale));
+		model.addAttribute("categories", categories);
+		if(errors.hasErrors()){
+			errorMessage.setContent(messageSource.getMessage("errorInscription", null, locale));
+			Set<String> listErrors = new HashSet<String>(); //Pour retirer les éléments dupliqués
+			for(FieldError f : errors.getFieldErrors()){
+				listErrors.add(f.getField());
+			}
+			
+			for(String f : listErrors){
+				errorMessage.appendContent("<br>" + messageSource.getMessage(f,null,locale));	
+			}
+
+		}
+		else
+		{
+			if(NumberUtils.isNumber(updateClientForm.getTelephoneNumber())){
+				
+				if(!updateClientForm.getMobileNumber().equals("") && !NumberUtils.isNumber(updateClientForm.getMobileNumber())){
+					
+					errorMessage.setContent(messageSource.getMessage("contactNumberOnlyNumbers", null, locale));
+				}
+				else
+				{
+					Client recordClient = clientDAO.findByEmail(client.getEmail());
+					Country country = countryDAO.findByName(updateClientForm.getCountry());
+					recordClient.setFirstName(updateClientForm.getFirstName());
+					recordClient.setLastName(updateClientForm.getLastName());
+					recordClient.setTelephoneNumber(updateClientForm.getTelephoneNumber());
+					recordClient.setMobileNumber(updateClientForm.getMobileNumber());
+					recordClient.setCountry(country);
+					recordClient.setCity(updateClientForm.getCity());
+					recordClient.setStreetName(updateClientForm.getStreetName());
+					recordClient.setStreetNumber(updateClientForm.getStreetNumber());
+					recordClient.setZipcode(updateClientForm.getZipcode());
+					
+					clientDAO.save(recordClient);
+					return "redirect:/welcome";
+				}
+				
+			}
+			else
+			{
+				errorMessage.setContent(messageSource.getMessage("contactNumberOnlyNumbers", null, locale));
+			}
+		}
+		return "redirect:/account";
+	}
+}

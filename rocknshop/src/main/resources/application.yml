@@ -1,0 +1,11 @@
+# Local server
+server:
+  # port is used by spring-boot-admin
+  port: 8080
+  contextPath: /rocknshop
+
+
+spring:
+  datasource:
+    password: iesn2016_mayarthur
+    url: jdbc:mysql://localhost:3306/rocknshop?user=root

@@ -1,0 +1,133 @@
+2017-01-07 23:50:14,019 [Worker-27] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.spring.henallux:rocknshop:0.0.1-SNAPSHOT @ C:\Users\May\Desktop\RockNShop\rocknshop\pom.xml.
+2017-01-07 23:50:19,218 [Worker-26] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.spring.henallux:rocknshop:0.0.1-SNAPSHOT @ C:\Users\May\Desktop\RockNShop\rocknshop\pom.xml.
+2017-01-07 23:50:33,891 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-07 23:50:33,906 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2017-01-07 23:50:33,986 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2017-01-07 23:50:34,019 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-07 23:50:34,019 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\May\Desktop\RockNShop\rocknshop\src\test\resources
+2017-01-07 23:50:40,964 [Worker-6] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.spring.henallux:rocknshop:0.0.1-SNAPSHOT @ C:\Users\May\Desktop\RockNShop\rocknshop\pom.xml.
+2017-01-07 23:51:34,691 [Worker-30] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for rocknshop
+2017-01-07 23:51:52,806 [Worker-24] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2017-01-07 23:51:55,364 [Worker-24] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.spring.henallux:rocknshop:0.0.1-SNAPSHOT @ C:\Users\May\Desktop\RockNShop\rocknshop\pom.xml.
+2017-01-07 23:52:10,978 [Worker-24] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /rocknshop/src/main/java
+2017-01-07 23:52:10,980 [Worker-24] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /rocknshop/src/main/resources
+2017-01-07 23:52:10,982 [Worker-24] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /rocknshop/src/main/resources
+2017-01-07 23:52:11,014 [Worker-24] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /rocknshop/src/test/java
+2017-01-07 23:52:25,928 [Worker-24] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for rocknshop
+2017-01-07 23:52:25,948 [Worker-24] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 33 sec
+2017-01-07 23:53:22,873 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-07 23:53:22,880 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2017-01-07 23:53:22,968 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2017-01-07 23:53:23,048 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-07 23:53:23,050 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\May\Desktop\RockNShop\rocknshop\src\test\resources
+2017-01-07 23:53:23,051 [Worker-27] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of rocknshop
+2017-01-07 23:53:23,055 [Worker-27] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for rocknshop
+2017-01-07 23:53:23,094 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 00:18:25,990 [Worker-38] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for rocknshop
+2017-01-08 00:20:29,142 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 00:20:29,143 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2017-01-08 00:20:29,147 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2017-01-08 00:20:29,159 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 00:20:29,159 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\May\Desktop\RockNShop\rocknshop\src\test\resources
+2017-01-08 00:20:29,159 [Worker-42] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of rocknshop
+2017-01-08 00:20:29,160 [Worker-42] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for rocknshop
+2017-01-08 00:20:29,165 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 00:23:11,463 [Worker-42] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\May\Desktop\RockNShop\rocknshop
+2017-01-08 00:23:11,467 [Worker-42] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B clean install
+2017-01-08 00:26:16,762 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 00:26:16,780 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2017-01-08 00:26:16,797 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2017-01-08 00:26:16,807 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 00:26:16,808 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\May\Desktop\RockNShop\rocknshop\src\test\resources
+2017-01-08 00:27:38,401 [Worker-44] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for rocknshop
+2017-01-08 00:27:49,563 [Worker-45] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2017-01-08 00:27:52,412 [Worker-45] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.spring.henallux:rocknshop:0.0.1-SNAPSHOT @ C:\Users\May\Desktop\RockNShop\rocknshop\pom.xml.
+2017-01-08 00:27:56,563 [Worker-45] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /rocknshop/src/main/java
+2017-01-08 00:27:56,564 [Worker-45] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /rocknshop/src/main/resources
+2017-01-08 00:27:56,564 [Worker-45] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /rocknshop/src/main/resources
+2017-01-08 00:27:56,565 [Worker-45] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /rocknshop/src/test/java
+2017-01-08 00:28:00,527 [Worker-45] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for rocknshop
+2017-01-08 00:28:00,537 [Worker-45] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 10 sec
+2017-01-08 00:28:35,948 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 00:28:35,951 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2017-01-08 00:28:36,030 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2017-01-08 00:28:36,057 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 00:28:36,057 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\May\Desktop\RockNShop\rocknshop\src\test\resources
+2017-01-08 00:28:36,058 [Worker-47] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of rocknshop
+2017-01-08 00:28:36,058 [Worker-47] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for rocknshop
+2017-01-08 00:28:36,068 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 00:29:10,156 [Worker-43] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\May\Desktop\RockNShop\rocknshop
+2017-01-08 00:29:10,157 [Worker-43] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B clean install
+2017-01-08 00:51:05,192 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 00:51:05,199 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2017-01-08 00:51:05,204 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2017-01-08 00:51:05,208 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 00:51:05,208 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\May\Desktop\RockNShop\rocknshop\src\test\resources
+2017-01-08 01:08:10,190 [Worker-59] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for rocknshop
+2017-01-08 01:08:25,121 [Worker-57] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2017-01-08 01:08:27,016 [Worker-57] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.spring.henallux:rocknshop:0.0.1-SNAPSHOT @ C:\Users\May\Desktop\RockNShop\rocknshop\pom.xml.
+2017-01-08 01:08:33,196 [Worker-57] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /rocknshop/src/main/java
+2017-01-08 01:08:33,196 [Worker-57] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /rocknshop/src/main/resources
+2017-01-08 01:08:33,197 [Worker-57] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /rocknshop/src/main/resources
+2017-01-08 01:08:33,197 [Worker-57] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /rocknshop/src/test/java
+2017-01-08 01:08:35,842 [Worker-57] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for rocknshop
+2017-01-08 01:08:35,848 [Worker-57] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 10 sec
+2017-01-08 01:09:05,724 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 01:09:05,756 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2017-01-08 01:09:05,808 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2017-01-08 01:09:05,837 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 01:09:05,838 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\May\Desktop\RockNShop\rocknshop\src\test\resources
+2017-01-08 01:09:05,839 [Worker-75] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of rocknshop
+2017-01-08 01:09:05,839 [Worker-75] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for rocknshop
+2017-01-08 01:09:05,850 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 01:11:14,925 [Worker-69] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for rocknshop
+2017-01-08 01:11:28,295 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 01:11:28,295 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2017-01-08 01:11:28,298 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2017-01-08 01:11:28,315 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 01:11:28,315 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\May\Desktop\RockNShop\rocknshop\src\test\resources
+2017-01-08 01:11:28,315 [Worker-81] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of rocknshop
+2017-01-08 01:11:28,316 [Worker-81] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for rocknshop
+2017-01-08 01:11:28,345 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 01:13:08,647 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 01:13:08,654 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-01-08 01:13:08,656 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-01-08 01:13:08,662 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 01:13:08,663 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\May\Desktop\RockNShop\rocknshop\src\test\resources
+2017-01-08 01:13:14,253 [Worker-73] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for rocknshop
+2017-01-08 01:13:35,331 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 01:13:35,333 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2017-01-08 01:13:35,339 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2017-01-08 01:13:35,366 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 01:13:35,367 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\May\Desktop\RockNShop\rocknshop\src\test\resources
+2017-01-08 01:13:35,368 [Worker-78] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of rocknshop
+2017-01-08 01:13:35,368 [Worker-78] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for rocknshop
+2017-01-08 01:13:35,425 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 01:14:23,759 [Worker-74] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\May\Desktop\RockNShop\rocknshop
+2017-01-08 01:14:23,760 [Worker-74] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B clean install
+2017-01-08 01:15:35,159 [Worker-83] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 01:15:35,161 [Worker-83] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-01-08 01:15:35,163 [Worker-83] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-01-08 01:15:35,168 [Worker-83] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 01:15:35,170 [Worker-83] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\May\Desktop\RockNShop\rocknshop\src\test\resources
+2017-01-08 01:24:37,832 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 01:24:37,839 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2017-01-08 01:24:37,852 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2017-01-08 01:24:37,861 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 01:24:37,862 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\May\Desktop\RockNShop\rocknshop\src\test\resources
+2017-01-08 01:35:41,098 [Worker-71] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2017-01-08 01:35:43,815 [Worker-71] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.spring.henallux:rocknshop:0.0.1-SNAPSHOT @ C:\Users\May\Desktop\RockNShop\rocknshop\pom.xml.
+2017-01-08 01:35:47,358 [Worker-71] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /rocknshop/src/main/java
+2017-01-08 01:35:47,359 [Worker-71] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /rocknshop/src/main/resources
+2017-01-08 01:35:47,359 [Worker-71] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /rocknshop/src/main/resources
+2017-01-08 01:35:47,359 [Worker-71] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /rocknshop/src/test/java
+2017-01-08 01:35:52,082 [Worker-71] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for rocknshop
+2017-01-08 01:35:52,112 [Worker-71] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 11 sec
+2017-01-08 01:36:15,936 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 01:36:15,939 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2017-01-08 01:36:15,990 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2017-01-08 01:36:16,036 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-01-08 01:36:16,038 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\May\Desktop\RockNShop\rocknshop\src\test\resources
+2017-01-08 01:36:16,039 [Worker-87] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of rocknshop
+2017-01-08 01:36:16,039 [Worker-87] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for rocknshop
+2017-01-08 01:36:16,053 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
