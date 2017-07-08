@@ -20,7 +20,10 @@ import com.spring.henallux.dataAccess.dao.ModelDAO;
 import com.spring.henallux.model.Client;
 import com.spring.henallux.model.EquivalentCategory;
 import com.spring.henallux.model.OrderShop;
+import com.spring.henallux.service.CategoriesService;
+import com.spring.henallux.service.ModelService;
 import com.spring.henallux.sessionAttributeModel.Categories;
+import com.spring.henallux.sessionAttributeModel.ClientAndBasket;
 import com.spring.henallux.sessionAttributeModel.ClientBasket;
 import com.spring.henallux.sessionAttributeModel.ConnectedClient;
 import com.spring.henallux.sessionAttributeModel.ProcessCommand;
@@ -29,23 +32,24 @@ import com.spring.henallux.util.Constant;
 
 @Controller
 @RequestMapping(value="/welcome")
-@SessionAttributes({Constant.ORDERSHOP, Constant.CONNECTEDCLIENT, Constant.CLIENTBASKET, 
-	Constant.PROCESSCOMMAND, Constant.CLIENT, Constant.CATEGORIES})
+/*@SessionAttributes({Constant.ORDERSHOP, Constant.CONNECTEDCLIENT, Constant.CLIENTBASKET, 
+	Constant.PROCESSCOMMAND, Constant.CLIENT, Constant.CATEGORIES})*/
+@SessionAttributes({Constant.CLIENT})
 public class WelcomeController {
-
-	@Autowired
-	private SessionFactory sessionFactory;
+	
+	/*@Autowired
+	private ModelDAO modelDAO;*/
 	
 	@Autowired
-	private ModelDAO modelDAO;
+	private CategoriesService categoriesService;
 	
 	@Autowired
-	private EquivalentCategoryDAO equivalentCategoryDAO;
+	private ModelService modelService;
 	
 	@Autowired
 	private MessageSource titleMessage;
 	
-	@ModelAttribute(Constant.CATEGORIES)
+	/*@ModelAttribute(Constant.CATEGORIES)
 	public Categories currentCategories(){
 		return new Categories();
 	}
@@ -53,15 +57,15 @@ public class WelcomeController {
 	@ModelAttribute(Constant.CLIENTBASKET)
 	public ClientBasket currentClientBasket(){
 		return new ClientBasket();
-	}
+	}*/
 	
 	@ModelAttribute(Constant.CLIENT)
-	public Client client(){
-		return new Client();
+	public ClientAndBasket newClient(){
+		return new ClientAndBasket();
 	}
 	
 	
-	@ModelAttribute(Constant.ORDERSHOP)
+	/*@ModelAttribute(Constant.ORDERSHOP)
 	public OrderShop currentOrderShop(){
 		return new OrderShop();
 	}
@@ -74,49 +78,26 @@ public class WelcomeController {
 	@ModelAttribute(Constant.PROCESSCOMMAND)
 	public ProcessCommand currendProcessCommand(){
 		return new ProcessCommand();
-	}
+	}*/
 	
 
 	@RequestMapping(method=RequestMethod.GET)
 	public String home(Model model, Locale locale, 
-			@ModelAttribute(value=Constant.ORDERSHOP) OrderShop orderShop,
+			/*@ModelAttribute(value=Constant.ORDERSHOP) OrderShop orderShop,
 			@ModelAttribute(value=Constant.CONNECTEDCLIENT) ConnectedClient connectedClient,
-			@ModelAttribute(value=Constant.CLIENTBASKET) ClientBasket clientBasket, 
-			@ModelAttribute(value=Constant.CLIENT) Client client,
+			@ModelAttribute(value=Constant.CLIENTBASKET) ClientBasket clientBasket,*/ 
+			@ModelAttribute(value=Constant.CLIENT) ClientAndBasket client,
 			@ModelAttribute(value=Constant.CATEGORIES)Categories categories){
-		ArrayList<com.spring.henallux.model.Model> instrumentModels = modelDAO.findTop10ByOrderByIdModelDesc();
-		model.addAttribute("model", instrumentModels);
+		
+		categories.setCategories(categoriesService.getCategoriesByLanguage(locale.getLanguage()));
+		
+		model.addAttribute("model", modelService.getLast10Models());
 		model.addAttribute(Constant.CLIENT, client);
+		model.addAttribute(Constant.CATEGORIES, categories);
 		model.addAttribute("titlePage", titleMessage.getMessage("homeTitlePage", null, locale));
-		
-		
-
-		ArrayList<EquivalentCategory> listCategory = equivalentCategoryDAO.getCategoriesByLanguage(locale.getLanguage());		
-		categories.setCategories(listCategory);
-
-		model.addAttribute("categories", categories);
-		
-		
-		//Décommenter si ajouts ou changement de structure de la BD
-		//reIndexModels(); 
 		
 		return "integrated:welcome";
 	}
 
-
-	private void reIndexModels(){
-
-		Session session = sessionFactory.openSession();
-		FullTextSession fullTextSession = Search.getFullTextSession(session);
-		try {
-			fullTextSession.createIndexer().startAndWait();
-		} catch (InterruptedException e) {
-			
-			e.printStackTrace();
-		}
-	}
-	
-	
-	
 	
 }

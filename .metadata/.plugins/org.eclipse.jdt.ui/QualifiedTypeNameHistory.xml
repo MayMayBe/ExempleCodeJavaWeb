@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="org.hibernate.engine.internal.Collections"/>
-<fullyQualifiedTypeName name="java.util.Collections"/>
+<fullyQualifiedTypeName name="java.util.Locale"/>
+<fullyQualifiedTypeName name="com.spring.henallux.service.CategoriesService"/>
+<fullyQualifiedTypeName name="com.spring.henallux.service.ModelService"/>
+<fullyQualifiedTypeName name="com.spring.henallux.sessionAttributeModel.ClientAndBasket"/>
+<fullyQualifiedTypeName name="com.spring.henallux.sessionAttributeModel.ClientLogin"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
 </qualifiedTypeNameHistroy>

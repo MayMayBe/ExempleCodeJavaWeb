@@ -47,16 +47,16 @@
             <div class="col-md-6 offer" data-animate="fadeInDown">
                 <a href='<spring:url value="/catalog/promotions"/>' class="btn btn-success btn-sm" data-animate-hover="shake"><spring:message code="offer"/></a>  
  
-                <c:if test ="${connectedClient.connected}">
+                <c:if test ="${client.idClient != 0}">
                 	<a href='<spring:url value="/loginRegister"/>'><spring:message code="userMsg"/> ${client.firstName}  ${client.lastName}</a>
 				</c:if>
                 
             </div>
             <div class="col-md-6" data-animate="fadeInDown">
                 <ul class="menu">
-                    <li><a href='<spring:url value="/loginRegister"/>'><spring:message code="login"/></a>
+                    <li><a href='<spring:url value="/login"/>'><spring:message code="login"/></a>
                     </li>
-					<li><a href='<spring:url value="/loginRegister"/>'><spring:message code="register"/></a>
+					<li><a href='<spring:url value="/register"/>'><spring:message code="register"/></a>
                     </li>
 					<li><a href="${localeFr}" class="btn btn-link btn-sm" ><img src="<spring:url value='/images/france.png' />"/></a>
 					</li>

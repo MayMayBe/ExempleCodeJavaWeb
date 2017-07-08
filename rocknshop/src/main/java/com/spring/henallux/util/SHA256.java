@@ -3,12 +3,15 @@ package com.spring.henallux.util;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import org.springframework.stereotype.Service;
+
 import com.spring.henallux.model.Client;
 
+@Service
 public class SHA256 {
 
 	
-	public static String encodePassword(String clientPassword){
+	public String encodePassword(String clientPassword){
 		
 		String password = clientPassword;
         MessageDigest md = null;
@@ -34,11 +37,11 @@ public class SHA256 {
 	
 	}
 	
-	public static Boolean correctPassword(Client clientRecord, Client clientOnWebsite){
+	public Boolean correctPassword(String passwordClient, String passwordLogin){
 		
-		String password = encodePassword(clientOnWebsite.getPassword());
+		String password = encodePassword(passwordLogin);
 		
-		if(clientRecord.getPassword().equals(password)){
+		if(passwordClient.equals(password)){
 			return true;
 		}else{
 			return false;

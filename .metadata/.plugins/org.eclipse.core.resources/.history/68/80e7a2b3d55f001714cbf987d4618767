@@ -1,0 +1,21 @@
+package com.spring.henallux.service;
+
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.spring.henallux.dataAccess.dao.ModelDAO;
+
+@Service
+public class ModelService {
+
+	
+	@Autowired
+	private ModelDAO modelDAO;
+	
+	ArrayList<com.spring.henallux.model.Model> getLast10Models(){
+		return modelDAO.findTop10ByOrderByIdModelDesc();
+	}
+	
+}

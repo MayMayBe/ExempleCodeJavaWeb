@@ -29,6 +29,7 @@ import com.spring.henallux.model.EquivalentCategory;
 import com.spring.henallux.model.OrderShop;
 import com.spring.henallux.model.PasswordChangeForm;
 import com.spring.henallux.model.UpdateClientForm;
+import com.spring.henallux.service.CategoriesService;
 import com.spring.henallux.sessionAttributeModel.Categories;
 import com.spring.henallux.sessionAttributeModel.ClientBasket;
 import com.spring.henallux.sessionAttributeModel.ConnectedClient;
@@ -39,13 +40,7 @@ import com.spring.henallux.util.SHA256;
 
 @Controller
 @RequestMapping(value="/account")
-@SessionAttributes({Constant.CLIENT , 
-					LoginRegisterController.NEWCLIENT,
-					Constant.CONNECTEDCLIENT,
-					Constant.ERRORMESSAGE,
-					Constant.COUNTRIES,
-					Constant.CLIENTBASKET,
-					Constant.CATEGORIES})
+@SessionAttributes({Constant.CLIENT})
 					
 public class AccountController {
 	
@@ -79,11 +74,8 @@ public class AccountController {
 		return new InscriptionErrorMessage();
 	}
 	
-	
-	public ArrayList<EquivalentCategory> setCategory(Locale locale){
-		ArrayList<EquivalentCategory> listCategory = equivalentCategoryDAO.getCategoriesByLanguage(locale.getLanguage());
-		return listCategory;
-	}
+	@Autowired
+	private CategoriesService categoriesService;
 	
 	
 	@RequestMapping(method=RequestMethod.GET)
@@ -117,8 +109,10 @@ public class AccountController {
 		model.addAttribute("titlePage", titleMessage.getMessage("accountTitlePage", null, locale));
 		model.addAttribute(Constant.PASSWORDCHANGEFORM,new PasswordChangeForm());
 		model.addAttribute(Constant.CLIENT, client);
-		categories.setCategories(setCategory(locale));
-		model.addAttribute("categories", categories);
+
+		categories.setCategories(categoriesService.getCategoriesByLanguage(locale.getLanguage()));
+		
+		model.addAttribute(Constant.CATEGORIES, categories);
 		return "integrated:account";
 	}
 	
@@ -141,7 +135,8 @@ public class AccountController {
 		//ConnectedClient et OrderShop
 		connectedClient.setConnected(false);
 		clientBasket.setOrderShopLines(new HashMap<>());
-		categories.setCategories(setCategory(locale));
+		categories.setCategories(categoriesService.getCategoriesByLanguage(locale.getLanguage()));
+		
 		model.addAttribute("categories", categories);
 		return "redirect:/welcome";
 	}
@@ -155,7 +150,8 @@ public class AccountController {
 		
 		model.addAttribute(Constant.CLIENT, client);
 		model.addAttribute("titlePage", titleMessage.getMessage("accountTitlePage", null, locale));
-		categories.setCategories(setCategory(locale));
+		categories.setCategories(categoriesService.getCategoriesByLanguage(locale.getLanguage()));
+		
 		model.addAttribute("categories", categories);
 		
 		if(errors.hasErrors()){
@@ -176,7 +172,7 @@ public class AccountController {
 			if(passwordChangeForm.getNewPassword().equals(passwordChangeForm.getRetypeNewPassword()))
 			{
 				
-				client.setPassword(passwordChangeForm.getOldPassword());
+				/*client.setPassword(passwordChangeForm.getOldPassword());
 				Client recordClient = clientDAO.findByEmail(client.getEmail());
 				if(SHA256.correctPassword(recordClient, client))
 				{
@@ -188,7 +184,7 @@ public class AccountController {
 				else
 				{
 					errorMessage.setContent(messageSource.getMessage("wrongPassword",null,locale));	
-				}
+				}*/
 				
 			}
 			else
@@ -209,7 +205,8 @@ public class AccountController {
 								Model model, Locale locale, @ModelAttribute(value=Constant.CATEGORIES)Categories categories){
 		model.addAttribute(Constant.CLIENT, client);
 		model.addAttribute("titlePage", titleMessage.getMessage("accountTitlePage", null, locale));
-		categories.setCategories(setCategory(locale));
+		categories.setCategories(categoriesService.getCategoriesByLanguage(locale.getLanguage()));
+		
 		model.addAttribute("categories", categories);
 		if(errors.hasErrors()){
 			errorMessage.setContent(messageSource.getMessage("errorInscription", null, locale));

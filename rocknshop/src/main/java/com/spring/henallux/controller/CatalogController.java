@@ -22,16 +22,23 @@ import com.spring.henallux.dataAccess.dao.ModelDAO;
 import com.spring.henallux.dataAccess.dao.PromotionDAO;
 import com.spring.henallux.model.EquivalentCategory;
 import com.spring.henallux.model.Promotion;
+import com.spring.henallux.service.CategoriesService;
+import com.spring.henallux.service.ModelService;
 import com.spring.henallux.sessionAttributeModel.Categories;
 import com.spring.henallux.util.Constant;
 
 @Controller
 @RequestMapping(value="/catalog")
-@SessionAttributes({Constant.CATEGORIES})
 public class CatalogController {
 
 	@Autowired
 	private MessageSource titleMessage;
+	
+	@Autowired
+	private CategoriesService categoriesService;
+	
+	@Autowired
+	private ModelService modelService;
 	
 	@Autowired
 	private ModelDAO modelDAO;
@@ -58,24 +65,28 @@ public class CatalogController {
 	public String getCatalogSelected(Model model, Locale locale, 
 			@ModelAttribute(value=Constant.CATEGORIES)Categories categories,
 			@PathVariable("categorySelected") Integer idCategory){
-		List<com.spring.henallux.model.Model> models = new ArrayList<>();
-		models = modelDAO.findModelsByCategory(idCategory);
-		HashSet<Promotion> promoList = getPromotionsList(models);
-		model.addAttribute(PROMOTIONLIST,promoList);
 		
-		model.addAttribute(ALLCATALOG, models);
+		
+		//List<com.spring.henallux.model.Model> models = new ArrayList<>();
+		//models = modelDAO.findModelsByCategory(idCategory);
+		
+		
+		//HashSet<Promotion> promoList = getPromotionsList(models);
+		
+		//model.addAttribute(PROMOTIONLIST,promoList);		
+		model.addAttribute("allCatalog", modelService.getModelsByCategory(idCategory));
 		model.addAttribute(HASEXECUTEDSEARCH,false);
 		
-		ArrayList<EquivalentCategory> listCategory = equivalentCategoryDAO.getCategoriesByLanguage(locale.getLanguage());		
-		categories.setCategories(listCategory);
-		model.addAttribute("categories", categories);
 		
+		categories.setCategories(categoriesService.getCategoriesByLanguage(locale.getLanguage()));
+		model.addAttribute(Constant.CATEGORIES, categories);
+	
 		model.addAttribute("titlePage", titleMessage.getMessage("catalogTitlePage", null, locale));
 		return "integrated:catalog";
 	}
 	
 	
-	@RequestMapping(method=RequestMethod.GET, value="/promotions")
+	/*@RequestMapping(method=RequestMethod.GET, value="/promotions")
 	public String promotions(Model model, Locale locale,
 			@ModelAttribute(value=Constant.CATEGORIES)Categories categories){
 
@@ -101,7 +112,7 @@ public class CatalogController {
 		model.addAttribute(TITLEPAGE, titleMessage.getMessage("detailTitlePage", null, locale));
 		model.addAttribute(HASEXECUTEDSEARCH,false);
 		return "integrated:catalog";
-	}
+	}*/
 	
 	private HashSet<Promotion> getPromotionsList(List<com.spring.henallux.model.Model> models) {
 		Date today = new Date(System.currentTimeMillis());
@@ -117,13 +128,15 @@ public class CatalogController {
 			}
 		}
 
-		HashSet<Object> seen=new HashSet<>();
+		HashSet<Object> seen = new HashSet<>();
 		promoList.removeIf(p->!seen.add(p.getBrand().getNameBrand()));	//Pour retirer les éléments dupliqués. seen.add renvoie false si l'opération a modifié le HashSet
 
 		return promoList;
 	}
 	
-	@RequestMapping(value="/search", method=RequestMethod.POST)
+	
+	
+	/*@RequestMapping(value="/search", method=RequestMethod.POST)
 	public String searchPost(@RequestParam String keyword,@RequestParam String criteria,Model model, Locale locale,
 			@ModelAttribute(value=Constant.CATEGORIES)Categories categories){
 
@@ -137,9 +150,9 @@ public class CatalogController {
 		ArrayList<EquivalentCategory> listCategory = equivalentCategoryDAO.getCategoriesByLanguage(locale.getLanguage());		
 		categories.setCategories(listCategory);
 		return "integrated:catalog";
-	}
+	}*/
 	
-	@RequestMapping(value="/search",method=RequestMethod.GET)
+/*	@RequestMapping(value="/search",method=RequestMethod.GET)
 	public String searchGet(Model model, Locale locale, @ModelAttribute(value=Constant.CATEGORIES)Categories categories){
 		
 		if(lastResearch != null){
@@ -152,6 +165,6 @@ public class CatalogController {
 		}
 		
 		return "integrated:catalog";
-	}
+	}*/
 	
 }

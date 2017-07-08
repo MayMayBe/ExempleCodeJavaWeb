@@ -1,0 +1,20 @@
+package com.spring.henallux.service;
+
+import java.util.ArrayList;
+import java.util.Locale;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.spring.henallux.dataAccess.dao.EquivalentCategoryDAO;
+import com.spring.henallux.model.EquivalentCategory;
+
+public class CategoriesService {
+
+	@Autowired
+	private EquivalentCategoryDAO equivalentCategoryDAO;
+	
+	ArrayList<EquivalentCategory> getCategoriesByLanguage(Locale locale){
+		return equivalentCategoryDAO.getCategoriesByLanguage(locale.getLanguage());
+	}
+	
+}

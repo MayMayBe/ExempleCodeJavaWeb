@@ -3,10 +3,10 @@ package com.spring.henallux.model;
 public class Client{
 
 	private Integer idClient;
-	private String email;
-	private String password;
 	private String firstName;
 	private String lastName;
+	private String email;
+	private String password;
 	private String telephoneNumber;
 	private String mobileNumber;
 	private String streetName;
@@ -18,15 +18,17 @@ public class Client{
 	
 	public Client(){}
 	
-	public Client(String email, String password,
-			String firstName, String lastName, String telephoneNumber,
-			String mobileNumber, String streetName,String streetNumber, String zipcode, String city, Country country) {
-		super();
+	
 
-		this.email = email;
-		this.password = password;
+	
+	
+	public Client(String firstName, String lastName, String email, String password, String telephoneNumber,
+			String mobileNumber, String streetName, String streetNumber, String zipcode, String city, Country country) {
+		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
 		this.telephoneNumber = telephoneNumber;
 		this.mobileNumber = mobileNumber;
 		this.streetName = streetName;
@@ -36,8 +38,6 @@ public class Client{
 		this.country = country;
 	}
 
-	
-	
 	public String getStreetNumber() {
 		return streetNumber;
 	}
