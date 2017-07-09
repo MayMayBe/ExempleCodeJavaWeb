@@ -22,11 +22,11 @@
                         <h1><spring:message code="newAccount" /></h1>
 
                         <p class="lead"><spring:message code="notCustomer" /></p>
-                        
-                        <p class="lead text-danger">${errorMessage }</p>
-                        
 
-                        <form:form id="inscription" method="POST" action="/rocknshop/register" modelAttribute="newClient">
+						<p class="lead text-danger">${errorMessage }</p>
+
+
+						<form:form id="inscription" method="POST" action="/rocknshop/register" modelAttribute="newClient">
                             <div class="form-group required">
                                 <form:label path="lastName" class="control-label"><spring:message code="lastName" /> </form:label>
                                 <form:input path="lastName" class="form-control" id="lastName" maxlength="50"/>

@@ -22,8 +22,5 @@ For each attribute, we have assigned a corresponding JSP
 <put-attribute name="main-content" value="/WEB-INF/jsp/{1}.jsp" />
 </definition>
 
-<definition name="error" extends="template-main">
-<put-attribute name="main-content" value="/WEB-INF/jsp/error.jsp" />
-</definition>
 
 </tiles-definitions>

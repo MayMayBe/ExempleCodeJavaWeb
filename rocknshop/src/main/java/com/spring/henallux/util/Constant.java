@@ -6,13 +6,10 @@ public class Constant {
 	public static final String FRANCAIS = "français";
 	public static final String ENGLISH = "english";
 	
-	//Constante pour récupération dans classes java et jsp
+//
 	public static final String IDMODEL = "idModel";
 	public static final String ORDERSHOP = "orderShop";
 	public static final String CLIENT = "client";
-	
-	
-	//Constantes qui correspondent aux Session attributes
 	public static final String BASKET = "basket";
 	public static final String ERRORMESSAGE = "errorMessage";
 	public static final String COUNTRIES = "countries";
@@ -22,6 +19,10 @@ public class Constant {
 	public static final String CATEGORIES = "categories";
 	public static final String NEWCLIENT = "newClient";
 	public static final String CLIENTLOGIN = "clientLogin";
+	public static final String CATEGORYSELECTED = "categorySelected";
+	public static final String ALLCATALOG = "allCatalog";
+	public static final String PROMOTIONLIST = "promotionList";
+	public static final String MODEL = "model";
 	
 	//Constante pour gérer si l'utilisateur est connecté ou non
 	public static final String CONNECTEDCLIENT = "connectedClient";

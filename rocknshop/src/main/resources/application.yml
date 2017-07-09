@@ -9,3 +9,11 @@ spring:
   datasource:
     password: root
     url: jdbc:mysql://localhost:3307/rocknshop?user=root
+  jpa:
+    ddl-auto : validate
+    hibernate.naming_strategy : org.hibernate.cfg.EJB3NamingStrategy
+    properties:
+      jadira.usertype.autoRegisterUserTypes: true
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        current_session_context_class:  org.springframework.orm.hibernate4.SpringSessionContext

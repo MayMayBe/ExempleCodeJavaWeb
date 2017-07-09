@@ -1,0 +1,188 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="include/importTags.jsp" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+</head>
+<body>
+
+
+
+        	<div id="content">
+            	<div class="container">
+
+                	
+
+                	<div class="col-md-3">
+ <!-- *** CUSTOMER MENU ***
+ _________________________________________________________ -->
+                    <div class="panel panel-default sidebar-menu">
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><spring:message code="customerSection" /></h3>
+                        </div>
+
+                        <div class="panel-body">
+
+                            <ul class="nav nav-pills nav-stacked">
+                                <li class="active">
+                                    <a href="#"><i class="fa fa-user"></i><spring:message code="myAccount" /></a>
+                                </li>
+                                <li>
+                                    <a href='<spring:url value="accountOrders"/>'><i class="fa fa-list"></i><spring:message code="myOrders" /></a>
+                                </li>
+                                <li>
+                                    <a href='<spring:url value="account/signout"/>'><i class="fa fa-sign-out"></i><spring:message code="logout" /></a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!-- /.col-md-3 -->
+
+                    <!-- *** CUSTOMER MENU END *** -->
+                </div>
+
+                <div class="col-md-9">
+                    <div class="box">
+                        <h1><spring:message code="myAccount" /></h1>
+                        <p class="lead"><spring:message code="customerTxt" /></p>
+                        <h3><spring:message code="changePassword" /></h3>
+                        <c:choose>
+	<c:when test="${errorMessage eq '0'}">
+						 <p class="lead text-success">${errorMessage }</p>
+</c:when>
+<c:otherwise>
+<p class="lead text-danger">${errorMessage }</p>
+</c:otherwise>
+</c:choose>
+
+                        <form:form method="post" action="/rocknshop/account/changePassword" modelAttribute="passwordChangeForm">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <form:label path="oldPassword" for="oldPassword"><spring:message code="oldPassword" /></form:label>
+                                        <form:input path="oldPassword" type="password" class="form-control" id="oldPassword" maxlength="65" minlength="8"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <form:label path="newPassword" for="newPassword"><spring:message code="newPassword" /></form:label>
+                                        <form:input path="newPassword" type="password" class="form-control" id="newPassword" maxlength="65" minlength="8"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <form:label path="retypeNewPassword" for="retypeNewPassword"><spring:message code="retypePassword" /></form:label>
+                                        <form:input path="retypeNewPassword" type="password" class="form-control" id="retypeNewPassword" maxlength="65" minlength="8"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+
+                            <div class="col-sm-12 text-center">
+                                <form:button type="submit" class="btn btn-primary"><i class="fa fa-save"></i><spring:message code="saveNewPassword" /></form:button>
+                            </div>
+                        </form:form>
+
+                        <hr>
+
+                        <h3><spring:message code="personalDetails" /></h3>
+                        <form:form id="changeDetails" method="POST" action="/rocknshop/account/updateClient" modelAttribute="updateClientForm">
+                            <div class="row">
+                                
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <form:label path="lastName"><spring:message code="lastName" /></form:label>
+                                		<form:input path="lastName" class="form-control" id="lastName"/>
+                                    </div>
+                                </div>
+								<div class="col-sm-6">
+                                    <div class="form-group">
+                                        <form:label path="firstName"><spring:message code="firstName" /></form:label>
+                               			<form:input path="firstName" class="form-control" id="firstName"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <form:label path="mobileNumber"><spring:message code="mobile" /></form:label>
+                              		  	<form:input path="mobileNumber" class="form-control" id="mobile"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="form-group">
+                                        <form:label path="telephoneNumber"><spring:message code="telephoneNumber" /></form:label>
+                                		<form:input path="telephoneNumber" class="form-control" id="phone"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+
+
+                                <div class="row">
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <form:label path="country"><spring:message code="country" /></form:label>
+                                 		<form:select path="country" type="text" class="form-control" id="country">
+                                 			<form:options path="country" items="${countries.countryList}" itemValue="countryName" itemLabel="countryName"/>
+                                 		</form:select>
+                                    </div>
+                                </div>
+                                
+                                    <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <form:label path="city"><spring:message code="city" /></form:label>
+                                		<form:input path="city" class="form-control" id="city"/>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <form:label path="streetName"><spring:message code="streetName" /></form:label>
+                                		<form:input path="streetName" class="form-control" id="streetName"/>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <form:label path="streetNumber"><spring:message code="streetNumber" /></form:label>
+                                		<form:input path="streetNumber" class="form-control" id="streetNumber"/>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <form:label path="zipcode"><spring:message code="zipcode" /></form:label>
+                                		<form:input path="zipcode" class="form-control" id="zipcode"/>
+                                    </div>
+                                </div>
+
+                                
+                                <div class="col-sm-12 text-center">
+                                    <form:button type="submit" class="btn btn-primary"><i class="fa fa-save"></i><spring:message code="saveChanges"/> </form:button>
+
+                                </div>
+                            </div>
+                        </form:form>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /#content -->
+
+
+</body>
+</html>

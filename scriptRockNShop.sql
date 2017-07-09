@@ -456,10 +456,10 @@ ex pour antoine, le mot de passe est : passwordantoine
 
 insert into promotion(idBrand,dateBeginning,dateEnd,percentageReduction)
 values
-(2,str_to_date('01,12,2016',"%d,%m,%Y"),str_to_date('07,12,2016',"%d,%m,%Y"),0.25),
-(3,str_to_date('07,12,2016',"%d,%m,%Y"),str_to_date('14,01,2017',"%d,%m,%Y"),0.10),
-(1,str_to_date('14,01,2017',"%d,%m,%Y"),str_to_date('21,01,2017',"%d,%m,%Y"),0.40),
-(1,str_to_date('01,02,2017',"%d,%m,%Y"),str_to_date('19,03,2017',"%d,%m,%Y"),0.40),
-(6,str_to_date('05,04,2017',"%d,%m,%Y"),str_to_date('13,06,2017',"%d,%m,%Y"),0.40),
-(7,str_to_date('05,05,2017',"%d,%m,%Y"),str_to_date('21,05,2017',"%d,%m,%Y"),0.40),
-(5,str_to_date('21,05,2017',"%d,%m,%Y"),str_to_date('28,05,2016',"%d,%m,%Y"),0.20);
+(2,str_to_date('01,07,2016',"%d,%m,%Y"),str_to_date('07,07,2016',"%d,%m,%Y"),0.25),
+(3,str_to_date('07,07,2016',"%d,%m,%Y"),str_to_date('14,07,2017',"%d,%m,%Y"),0.10),
+(1,str_to_date('14,07,2017',"%d,%m,%Y"),str_to_date('21,07,2017',"%d,%m,%Y"),0.40),
+(1,str_to_date('01,07,2017',"%d,%m,%Y"),str_to_date('19,07,2017',"%d,%m,%Y"),0.40),
+(6,str_to_date('05,07,2017',"%d,%m,%Y"),str_to_date('13,07,2017',"%d,%m,%Y"),0.40),
+(7,str_to_date('05,07,2017',"%d,%m,%Y"),str_to_date('21,07,2017',"%d,%m,%Y"),0.40),
+(5,str_to_date('21,07,2017',"%d,%m,%Y"),str_to_date('28,07,2016',"%d,%m,%Y"),0.20);
